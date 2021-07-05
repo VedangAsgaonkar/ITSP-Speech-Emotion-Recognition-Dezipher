@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speech Recognition in Python</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}" />
+	
+	<meta charset="UTF-8">
+    <title>Record Audio</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+
+ 
+    <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style type="text/css">
+			html{
+				overflow-y: scroll;
+				overflow-x : scroll;
+			}
+			body {
+				
+				margin-top: 0px;
+				background-color: #e1e1e1;
+				
+				text-align: center;
+			    padding-top: 0px ;
+				
+			}
+			header{	
+				padding-left: 10px;
+				padding-top: 20px ;
+				padding-bottom: 20px;
+				padding-right: 10px;
+				height: 150px ;
+				background-image: linear-gradient(to right, cyan , blue);
+			}
+			header h1{
+				
+				font-size: 60px;				
+			}
+			.dropbtn {
+			  position: fixed;
+			  top: 0;
+			  right: 0;
+			  height: 70;
+			  background-color: black ;
+			  background-image: navigation.png;
+			  color: white;
+			  
+			  font-size: 16px;
+			  border: none;
+			  cursor: pointer;
+			}
+
+			.dropdown {
+			  position: relative;
+			  display: inline-block;
+			}
+
+			.dropdown-content {
+			
+			  display: none;
+			  position: fixed;
+			  right: 0;
+			  top: 52px;
+			  background-color: black;
+			  min-width: 160px;
+			  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			  z-index: 1;
+			}
+
+			.dropdown-content a {
+			  color: white;
+			  padding: 12px 16px;
+			  text-decoration: none;
+			  display: block;
+			}
+
+			.dropdown-content a:hover {background-color: #a1a1a1;}
+
+			.dropdown:hover .dropdown-content {
+			  display: block;
+			}
+
+			.dropdown:hover .dropbtn {
+			  background-color: black;
+			}
+			
+			.maingit{
+				background-color: black;
+				position: fixed;
+				top: 75px;
+				right: 0px;
+				height: 70;
+				width: 70;
+				float: right;				
+			}
+			
+			#submitButton{
+				background-color: #009900 ;
+				border-radius : 25%;
+			}
+			
+		
+	</style>
+</head>
+<body>
+<div id="speechContainer">
+<header>
+			<img src="icon.png" width="70" height="70" align="left">
+			<h1 align="center">Upload Audio</h1>
+			
+			<div class="dropdown" style="float:right;">
+				<button class="dropbtn"><a href="#"><img src="/static/navigation.png" width="70" height="70"></img></a></button>
+				 <div class="dropdown-content">
+					<a href="home.html">Home</a>
+					<a href="record.html">Record Audio</a>
+					<a href="upload.html">Upload Audio</a>
+					<a href="contacts.html">Contact us</a>
+				 </div>
+			</div>
+			<button class="maingit"> <a href="https://github.com/VedangAsgaonkar"><img src="/static/githublogo.png" width="65" height="65"></a> </button>
+		</header>
+    <h1>Upload new File</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <br>
+        <br>
+        <p>Please select speaker's gender:</p>
+    	<input type="radio" id="male" name="gender" value="male" required/>
+    	<label for="male">Male</label><br>
+    	<input type="radio" id="female" name="gender" value="female" required/>
+    	<label for="female">Female</label><br>
+        <br>
+        <input type="submit" id="submitButton" value="Transcribe"/>
+    </form>
+    
+
+
+</div>
+	{% if b %}
+		<br>
+		<br>
+	    <div class="container">
+
+		  <div class="row">
+		  	<div class="col-sm">
+		  		<h4>
+		  			<br>Tone:
+		  		</h4>
+		  	</div>
+		    <div class="col-sm" id = "c1">
+		      <img src = "/static/happy.png" width = 100px height = 100px  
+		      style = "filter: grayscale({{transcript['sound_features_X_happy']}})">
+		      
+
+		    </div>
+		    <div class="col-sm" id = "c2">
+		    	<p> </p>
+		      <img src = "/static/sad.png"  width = 80px height = 80px style = "filter: grayscale({{transcript['sound_features_X_sad']}})" >
+		    </div>
+		    <div class="col-sm" id = "c3">
+		    	<p> </p>
+		      <img src = "/static/angry.png" width = 80px height = 80px style = "filter: grayscale({{transcript['sound_features_X_anger']}})" >
+
+		    </div>
+		  </div>
+		  <div class="row">
+		  	<div class="col-sm">
+		  		<h4>
+		  			<br>Words:
+		  		</h4>
+		  	</div>
+		    <div class="col-sm" id = "c4">
+		      <img src = "/static/happy.png" width = 100px height = 100px style = "filter: grayscale({{transcript['word_happy']}})" >
+		    </div>
+		    <div class="col-sm" id = "c5">
+		    	<p> </p>
+		      <img src = "/static/sad.png" width = 80px height = 80px  style = "filter: grayscale({{transcript['word_sad']}})" >
+		    </div>
+		    <div class="col-sm" id = "c6">
+		    	<p> </p>
+		      <img src = "/static/angry.png" width = 80px height = 80px style = "filter: grayscale({{transcript['word_anger']}})">
+		    </div>
+		  </div>
+		</div>
+		
+	    	
+    {% else %}
+    	<br>
+    	<p>Audio Not Uploaded</p>
+    	<div class="container">
+
+		  <div class="row">
+		  	<div class="col-sm">
+		  		<h4>
+		  			<br>Tone:
+		  		</h4>
+		  	</div>
+		    <div class="col-sm" id = "c1">
+		      <img src = "/static/happy.png" width = 100px height = 100px  >
+		      
+
+		    </div>
+		    <div class="col-sm" id = "c2">
+		    	<p> </p>
+		      <img src = "/static/sad.png"  width = 80px height = 80px  >
+		    </div>
+		    <div class="col-sm" id = "c3">
+		    	<p> </p>
+		      <img src = "/static/angry.png" width = 80px height = 80px  >
+
+		    </div>
+		  </div>
+		  <div class="row">
+		  	<div class="col-sm">
+		  		<h4>
+		  			<br>Words:
+		  		</h4>
+		  	</div>
+		    <div class="col-sm" id = "c4">
+		      <img src = "/static/happy.png" width = 100px height = 100px  >
+		    </div>
+		    <div class="col-sm" id = "c5">
+		    	<p> </p>
+		      <img src = "/static/sad.png" width = 80px height = 80px   >
+		    </div>
+		    <div class="col-sm" id = "c6">
+		    	<p> </p>
+		      <img src = "/static/angry.png" width = 80px height = 80px >
+		    </div>
+		  </div>
+		</div>
+
+    {% endif %}
+
+
+
+</body>
+</html>
