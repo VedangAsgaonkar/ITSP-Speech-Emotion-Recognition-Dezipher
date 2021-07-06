@@ -38,5 +38,21 @@ webapp
   |_train.txt
 ```
 
+### Install Python and pip
+Install Python 3.x from [Python.org](https://www.python.org/downloads/). Install pip for Python
+
 ### Create and Activate a virtual environment
-To create a virtual environment, type the following in the terminal/ command prompt
+To create a virtual environment, follow instructions given [here](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/)
+
+###  Installing required libraries
+Activate the virtual environment and in it install the following:
+* [Numpy](https://numpy.org/install/)
+* [Flask](https://pypi.org/project/Flask/)
+* [Tensorflow](https://www.tensorflow.org/install)
+* [Keras](https://keras.io/)
+* [Librosa](https://pypi.org/project/librosa/)
+* SpeechRecognition
+  ```
+  pip install SpeechRecognition
+  ```
+ 
