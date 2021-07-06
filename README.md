@@ -37,3 +37,6 @@ webapp
   |_Emotion(angry).txt
   |_train.txt
 ```
+
+### Create and Activate a virtual environment
+To create a virtual environment, type the following in the terminal/ command prompt
