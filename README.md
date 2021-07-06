@@ -8,3 +8,11 @@ The trained model weights are stored [here](https://drive.google.com/drive/folde
 
 ## Webapp
 [The Webapp](Webapp) Dezipher has been made to deploy the models. It has a Flask back-end and makes use of HTML, CSS and Javascript on the front-end. [Mattdiamond Recorderjs](https://github.com/mattdiamond/Recorderjs) has been used for taking live audio-input from the user. 
+
+## Webapp Deployment
+The Dezipher webapp will soon be deployed on Google App Engine
+
+## Webapp Installation
+Beside the online version, a user may also install the Dezipher web app and run it on their own machine.
+
+### Steps for Installation
