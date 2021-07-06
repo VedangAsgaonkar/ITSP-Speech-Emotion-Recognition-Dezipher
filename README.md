@@ -20,9 +20,17 @@ Clone/ download the webapp folder in this repository. In the [models](webapp/mod
 ```
 webapp
 |_downloads
+  |_README.md
 |_glove
+  |_glove.6B.300d.txt
+  |_README.md
 |_main.py
 |_models
+  |_Mel_Based_Detector_F.h5
+  |_Mel_Based_Detector_M.h5
+  |_MFCC_Based_Detector_F.h5
+  |_MFCC_Based_Detector_F.h5
+  |_Words_Based_Detector_F.h5
 |_static
 |_templates
 |_text
