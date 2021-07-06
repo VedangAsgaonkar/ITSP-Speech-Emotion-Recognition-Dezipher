@@ -19,5 +19,11 @@ Beside the online version, a user may also install the Dezipher web app and run 
 Clone/ download the webapp folder in this repository. In the [models](webapp/models) folder download the models from [here](https://drive.google.com/drive/folders/1xUz0hBP1nSk6Tf7jfpFy5CIUKf0_qTt5?usp=sharing). In the [text](webapp/text) folder download [this](https://drive.google.com/file/d/1vkggJKi-QPSA-tpROvZisW5KvdBLzc83/view?usp=sharing) and [this](https://drive.google.com/file/d/1hYjiT3RM8_l6sH2HlYsPwL5lnFHuKnq_/view?usp=sharing) file. In the [glove](webapp/glove) folder download [this](https://drive.google.com/file/d/14i7sZCaTE9wmOFdPEkvarVdTWtupff9N/view?usp=sharing) file.
 ```
 webapp
-|
+|_downloads
+|_glove
+|_main.py
+|_models
+|_static
+|_templates
+|_text
 ```
