@@ -55,4 +55,10 @@ Activate the virtual environment and in it install the following:
   ```
   pip install SpeechRecognition
   ```
+### Running the App
+To run the webapp, open terminal and activate the virtual environment. Go inside the webapp directory. Then execute the following command
+```
+FLASK_APP=main.py flask run
+```
+Open ```http://127.0.0.1:5000/``` on any web-browser and the app will run.
  
